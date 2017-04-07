@@ -30,15 +30,24 @@ function Customer(fullName, street, city, state, zip) {
 }
 
 function totalCost(totalCost) {
-  this.totalCost = totalCost
+  this.totalCost = totalCost;
+  this.costArray = [];
+}
+
+totalCost.prototype.calculate = function() {
+  var cumulativeCost = 0;
+  this.costArray.forEach(function(singleCost) {
+    cumulativeCost += singleCost;
+  });
+  return cumulativeCost;
 }
 
 // **********************************************************
 // User Interface Logic:
 // **********************************************************
 $(document).ready(function() {
-  var thisCost = new totalCost(0);
-  $("form#all-pizzas").submit(function(event) {
+  var thisCost = new totalCost(0);          ///////////////////////////
+    $("form#all-pizzas").submit(function(event) {
     event.preventDefault();
     $(".new-pizza").each(function() {
       var pizzaSizeInput = $(this).find("#pizzaSize").val();
@@ -56,9 +65,11 @@ $(document).ready(function() {
       $("#finalPizzaDisplay").append(
         '$' + newPizza.cost() +
         '</li>');
+      thisCost.costArray.push(newPizza.cost());
     });
     $("#all-pizzas").toggleClass("hidden");
     $("#finalPizzaDiv").fadeToggle(1000);
+    $(".finalcost").text("Your final price is $" + thisCost.calculate());
   });
 
   $("form#new-customer").submit(function(event) {
@@ -78,11 +89,15 @@ $(document).ready(function() {
   });
 
   $("#add-breadsticks").click(function() {
-    $("#finalPizzaDisplay").append("<li>One Order of Breadsticks, $1.00</li>");
+    $("#finalPizzaDisplay").append("<li>One Order of Breadsticks, $1.50</li>");
+    thisCost.costArray.push(1.5);
+    $(".finalcost").text("Your final price is $" + thisCost.calculate());
   });
 
   $("#add-soda").click(function() {
     $("#finalPizzaDisplay").append("<li>One 750ml Soft Drink, $2.50</li>");
+    thisCost.costArray.push(2.50);
+    $(".finalcost").text("Your final price is $" + thisCost.calculate());
   });
 
   $("#add-pizzas").click(function() {
