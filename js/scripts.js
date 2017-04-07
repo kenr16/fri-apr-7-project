@@ -38,17 +38,19 @@ $(document).ready(function() {
       var pizzaBaseInput = $(this).find("#pizzaBase").val();
       var newPizza = new Pizza(pizzaSizeInput, pizzaBaseInput);
       $("#finalPizzaDisplay").append(
-        '<li>One ' + pizzaSizeInput + '" ' + pizzaBaseInput + ' Pizza with ');
+        '<li>One ' + newPizza.size + '" ' + newPizza.base + ' Pizza with ');
       $(this).find("input:checkbox[name=toppings-availible]:checked").each(function(){
         var pizzaToppingsInput = $(this).val();
         newPizza.addTopping(pizzaToppingsInput);
-        $("#finalPizzaDisplay").append(pizzaToppingsInput + ", ");
+      });
+      newPizza.toppings.forEach(function(topping) {
+        $("#finalPizzaDisplay").append(topping + ", ");
       });
       $("#finalPizzaDisplay").append(
         '</li>');
     });
     $("#all-pizzas").toggleClass("hidden");
-    $("#finalPizzaDiv").toggleClass("hidden");
+    $("#finalPizzaDiv").fadeToggle(1000);
   });
 
   $("form#new-customer").submit(function(event) {
@@ -59,7 +61,11 @@ $(document).ready(function() {
     var stateInput = $("input#state-address").val();
     var zipInput = $("input#zip-code").val();
     var newCustomer = new Customer(fullNameInput, streetInput, cityInput, stateInput, zipInput);
-    alert(newCustomer.fullName);
+    $("#finalAddressDisplay").append(newCustomer.fullName + "<br>" + newCustomer.street + "<br>" + newCustomer.city + "<br>" + newCustomer.state + "<br>" + newCustomer.zip);
+
+
+    $("#new-customer").toggleClass("hidden");
+    $("#finalAddressDiv").fadeToggle(1000);
 
   });
 
@@ -68,7 +74,7 @@ $(document).ready(function() {
   });
 
   $("#add-soda").click(function() {
-    $("#finalPizzaDisplay").append("<li>One liter of soda,</li>");
+    $("#finalPizzaDisplay").append("<li>One 750ml Soft Drink,</li>");
   });
 
   $("#add-pizzas").click(function() {
@@ -109,24 +115,4 @@ $(document).ready(function() {
         '</div>' +
       '</div>'  );
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 });

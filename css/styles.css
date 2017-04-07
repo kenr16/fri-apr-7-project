@@ -1,3 +1,14 @@
 .hidden {
   display: none;
 }
+
+#finalPizzaDiv {
+  display: none;
+  z-index: 2;
+}
+
+
+#finalAddressDiv {
+  display: none;
+  z-index: 2;
+}
