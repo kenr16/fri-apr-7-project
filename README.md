@@ -23,17 +23,17 @@ _This website will allow a user to order a pizza, select a size and toppings and
 * _Establish a prototype to add toppings to an array of "toppings" within the pizza._
 * _Establish a prototype to calculate the final cost of the pizza._
 * _Allow the user to choose a size and an array of toppings, and upon submitting, view the final cost of the pizza._
-    _Example Input: Large, Cheese, Pepperoni_
-    _Example Output: $15.00_
+    -Example Input: Large, Cheese, Pepperoni
+    -Example Output: $15.00
 * _Allow the user to submit their name and address into form fields, then view confirmation that the address has registered._
-    _Example Input: "Ken Rutan, Portland, OR"_
-    _Example Output: "Ken Rutan, Portland, OR"_
+    -Example Input: "Ken Rutan, Portland, OR"
+    -Example Output: "Ken Rutan, Portland, OR"
 * _Allow the user to submit orders for multiple pizzas._
-    _Example Input: *click a button for an additional pizza*_
-    _Example Output: *Forms appear for the relevant information for a second pizza*_
+    -Example Input: *click a button for an additional pizza*
+    -Example Output: *Forms appear for the relevant information for a second pizza*
 * _Display the sum total of all ordered pizzas at the bottom of the screen._
-    _Example Input: 3 pizzas: $15, $30, $18_
-    _Example Output: $63_
+    -Example Input: 3 pizzas: $15, $30, $18
+    -Example Output: $63
 
 ## Known Bugs
 
