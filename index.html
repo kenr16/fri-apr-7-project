@@ -33,7 +33,7 @@
                 <div class="row">
                   <p><b>Please select which toppings you would like added to your pizza:</b></p>
                   <div class="col-xs-5">
-                    <input type="checkbox" name="toppings-availible" value="Cheese">Cheesee ($0.50)<br>
+                    <input type="checkbox" name="toppings-availible" value="Cheese">Cheese ($0.50)<br>
                     <input type="checkbox" name="toppings-availible" value="Double Cheese">Double Cheese  ($0.50)<br>
                     <input type="checkbox" name="toppings-availible" value="Triple Cheese">Triple Cheese  ($0.50)<br>
                     <input type="checkbox" name="toppings-availible" value="Pepperoni">Pepperoni  ($0.50)<br>
@@ -42,17 +42,23 @@
                     <input type="checkbox" name="toppings-availible" value="Sausage">Sausage  ($0.50)<br>
                     <input type="checkbox" name="toppings-availible" value="Bacon">Bacon  ($0.50)<br>
                     <input type="checkbox" name="toppings-availible" value="Mushrooms">Mushroom ($0.50)<br>
-                    <input type="checkbox" name="toppings-availible" value="Bacon">Onion  ($0.50)<br>
+                    <input type="checkbox" name="toppings-availible" value="Onion">Onion  ($0.50)<br>
                   </div>
                 </div>
               </div>
-
-              <button type="submit" class="btn">Order Pizza</button>
-              <span class="btn btn-primary" id="add-pizzas">Add Another Pizza!</span>
             </div><!-- This div ends the former form-->
             <div id="addedPizzas">
             </div>
+            <button type="submit" class="btn">Order Pizza</button>
+            <span class="btn btn-primary" id="add-pizzas">Add Another Pizza!</span>
           </form>
+          <div id="finalPizzaDiv" class="hidden">
+            <h2>Your Order Made To Go:</h2>
+            <ul id="finalPizzaDisplay">
+            </ul>
+            <span class="btn btn-primary" id="add-breadsticks">Add Breadsticks!</span>
+            <span class="btn btn-primary" id="add-soda">Add Soda!</span>
+          </div>
         </div> <!-- This div ends the column. -->
 
 
@@ -83,6 +89,13 @@
 
             <button type="submit" class="btn">Add Address</button>
           </form>
+
+          <div id="finalAddressDiv" class="hidden">
+            <h2>We will deliver to the following address:</h2>
+            <span id="finalAddressDisplay">
+            </span>
+          </div>
+
         </div>  <!-- This div ends the column. -->
       </div>  <!-- This div ends the row. -->
       <div class="row">

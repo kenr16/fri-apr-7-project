@@ -33,23 +33,22 @@ $(document).ready(function() {
 
   $("form#all-pizzas").submit(function(event) {
     event.preventDefault();
-    //var pizzaSizeInput = $(this).find("#addressType").val();
-    //var pizzaSizeInput = document.getElementById('pizzaSize').value;
-    //var pizzaBaseInput = document.getElementById('pizzaBase').value;
-    //var newPizza = new Pizza(pizzaSizeInput, pizzaBaseInput);
-
     $(".new-pizza").each(function() {
       var pizzaSizeInput = $(this).find("#pizzaSize").val();
       var pizzaBaseInput = $(this).find("#pizzaBase").val();
       var newPizza = new Pizza(pizzaSizeInput, pizzaBaseInput);
+      $("#finalPizzaDisplay").append(
+        '<li>One ' + pizzaSizeInput + '" ' + pizzaBaseInput + ' Pizza with ');
       $(this).find("input:checkbox[name=toppings-availible]:checked").each(function(){
         var pizzaToppingsInput = $(this).val();
         newPizza.addTopping(pizzaToppingsInput);
+        $("#finalPizzaDisplay").append(pizzaToppingsInput + ", ");
       });
-
-      alert(newPizza.toppings);
-
+      $("#finalPizzaDisplay").append(
+        '</li>');
     });
+    $("#all-pizzas").toggleClass("hidden");
+    $("#finalPizzaDiv").toggleClass("hidden");
   });
 
   $("form#new-customer").submit(function(event) {
@@ -62,6 +61,14 @@ $(document).ready(function() {
     var newCustomer = new Customer(fullNameInput, streetInput, cityInput, stateInput, zipInput);
     alert(newCustomer.fullName);
 
+  });
+
+  $("#add-breadsticks").click(function() {
+    $("#finalPizzaDisplay").append("<li>One Order of Breadsticks,</li>");
+  });
+
+  $("#add-soda").click(function() {
+    $("#finalPizzaDisplay").append("<li>One liter of soda,</li>");
   });
 
   $("#add-pizzas").click(function() {
