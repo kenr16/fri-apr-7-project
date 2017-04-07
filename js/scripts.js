@@ -21,7 +21,7 @@ Pizza.prototype.cost = function() {                 //This function will calcula
   return cost;
 }
 
-function Customer(fullName, street, city, state, zip) {
+function Customer(fullName, street, city, state, zip) {   //Pretty simple constructor for a customer object to store their data.
   this.fullName = fullName;
   this.street = street;
   this.city = city;
@@ -29,12 +29,12 @@ function Customer(fullName, street, city, state, zip) {
   this.zip = zip;
 }
 
-function totalCost(totalCost) {
+function totalCost(totalCost) {                   //This will construct an object to store the total cost of the order.
   this.totalCost = totalCost;
   this.costArray = [];
 }
 
-totalCost.prototype.calculate = function() {
+totalCost.prototype.calculate = function() {    //Not supposed to introduce new variables here, but they are local, and this.totalCost was NOT working as intended, for reasons I intend to revisit.
   var cumulativeCost = 0;
   this.costArray.forEach(function(singleCost) {
     cumulativeCost += singleCost;
@@ -46,33 +46,33 @@ totalCost.prototype.calculate = function() {
 // User Interface Logic:
 // **********************************************************
 $(document).ready(function() {
-  var thisCost = new totalCost(0);          ///////////////////////////
+  var thisCost = new totalCost(0);            //Establishes a variable for calculating the overall cost of the order.
     $("form#all-pizzas").submit(function(event) {
     event.preventDefault();
-    $(".new-pizza").each(function() {
-      var pizzaSizeInput = $(this).find("#pizzaSize").val();
+    $(".new-pizza").each(function() {         //Cycles through all of the form fields for each unique pizza.
+      var pizzaSizeInput = $(this).find("#pizzaSize").val();    //These take the values in the input fields.
       var pizzaBaseInput = $(this).find("#pizzaBase").val();
-      var newPizza = new Pizza(pizzaSizeInput, pizzaBaseInput);
+      var newPizza = new Pizza(pizzaSizeInput, pizzaBaseInput);  //Establishes a new variable for the individual pizza.
       $("#finalPizzaDisplay").append(
         '<li>One ' + newPizza.size + '" ' + newPizza.base + ' Pizza with ');
-      $(this).find("input:checkbox[name=toppings-availible]:checked").each(function(){
-        var pizzaToppingsInput = $(this).val();
+      $(this).find("input:checkbox[name=toppings-availible]:checked").each(function(){    //I am still amazed hours later that I got this command line to work as desired through guessing alone.
+        var pizzaToppingsInput = $(this).val();                                           //This will add all of the toppings selected to the array of toppings for each individual pizza.
         newPizza.addTopping(pizzaToppingsInput);
       });
-      newPizza.toppings.forEach(function(topping) {
-        $("#finalPizzaDisplay").append(topping + ", ");
+      newPizza.toppings.forEach(function(topping) {         //This loop is here to append the pizza toppings to the final display, NOT the array.
+        $("#finalPizzaDisplay").append(topping + ", ");     //It was separated to perform logic via the objects rather than directly appending from pizzaToppingsInput above.
       });
       $("#finalPizzaDisplay").append(
-        '$' + newPizza.cost() +
+        '$' + newPizza.cost() +                             //Displays the cost of the individual pizza, pretty simple.
         '</li>');
-      thisCost.costArray.push(newPizza.cost());
+      thisCost.costArray.push(newPizza.cost());             //Pushes the cost of the individual pizza into the array that hadles the cost of all pizzas together.
     });
-    $("#all-pizzas").toggleClass("hidden");
+    $("#all-pizzas").toggleClass("hidden");                 //Removes the pizza order form and displays the final prices.
     $("#finalPizzaDiv").fadeToggle(1000);
-    $(".finalcost").text("Your final price is $" + thisCost.calculate());
+    $(".finalcost").text("Your final price is $" + thisCost.calculate());   //Calls the function to display the overall price of all pizzas.
   });
 
-  $("form#new-customer").submit(function(event) {
+  $("form#new-customer").submit(function(event) {            //Pretty simple function to take in a user's name and address and store in in the back as well as display it back as confirmation.
     event.preventDefault();
     var fullNameInput = $("input#new-full-name").val();
     var streetInput = $("input#street-address").val();
@@ -83,12 +83,12 @@ $(document).ready(function() {
     $("#finalAddressDisplay").append(newCustomer.fullName + "<br>" + newCustomer.street + "<br>" + newCustomer.city + "<br>" + newCustomer.state + "<br>" + newCustomer.zip);
 
 
-    $("#new-customer").toggleClass("hidden");
+    $("#new-customer").toggleClass("hidden");               //Removes the address forms and displays the confirmation screen.
     $("#finalAddressDiv").fadeToggle(1000);
 
   });
 
-  $("#add-breadsticks").click(function() {
+  $("#add-breadsticks").click(function() {                                      //These next two function just add breadsticks and soda to the overall cost and display them.
     $("#finalPizzaDisplay").append("<li>One Order of Breadsticks, $1.50</li>");
     thisCost.costArray.push(1.5);
     $(".finalcost").text("Your final price is $" + thisCost.calculate());
@@ -100,7 +100,7 @@ $(document).ready(function() {
     $(".finalcost").text("Your final price is $" + thisCost.calculate());
   });
 
-  $("#add-pizzas").click(function() {
+  $("#add-pizzas").click(function() {                                             //The-wall-of-text™ is identical to the pizza forms already in the HTML, this just adds more of them.
     $("#addedPizzas").append(
       '<hr>' +
       '<h2>Next Pizza:</h2>' +
