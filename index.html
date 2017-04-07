@@ -2,7 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
     <script type="text/javascript" src="js/jquery-3.2.0.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
     <title>Pizza Site</title>
@@ -11,47 +11,52 @@
     <div class="container">
       <h1>Pizza Site</h1>
       <div class"row">
-        <div class="col-sm-5">
-          <h2>Add a Pizza:</h2>
-          <form id="new-pizza">
-            <label for="pizzaSize">Select the size of your pizza:</label>
-            <select class="form-control" id="pizzaSize">
-              <option value="8">Personal (8")</option>
-              <option value="10">Small (10")</option>
-              <option value="12">Medium (12")</option>
-              <option value="14">Large (14")</option>
-              <option value="16">XtraLarge (16")</option>
-              <option value="18">New York (18")</option>
-            </select>
-            <label for="pizzaBase">Select a base for your pizza:</label>
-            <select class="form-control" id="pizzaBase">
-              <option value="Tomato">Tomato</option>
-              <option value="Pesto">Pesto</option>
-            </select>
-            <div class="form-group">
-              <div class="row">
-                <p><b>Please select which toppings you would like added to your pizza:</b></p>
-                <div class="col-xs-5">
-                  <input type="checkbox" name="toppings-availible" value="Cheese">Cheesee ($0.50)<br>
-                  <input type="checkbox" name="toppings-availible" value="Double Cheese">Double Cheese  ($0.50)<br>
-                  <input type="checkbox" name="toppings-availible" value="Triple Cheese">Triple Cheese  ($0.50)<br>
-                  <input type="checkbox" name="toppings-availible" value="Pepperoni">Pepperoni  ($0.50)<br>
-                </div>
-                <div class="col-xs-5">
-                  <input type="checkbox" name="toppings-availible" value="Sausage">Sausage  ($0.50)<br>
-                  <input type="checkbox" name="toppings-availible" value="Bacon">Bacon  ($0.50)<br>
-                  <input type="checkbox" name="toppings-availible" value="Mushrooms">Mushroom ($0.50)<br>
-                  <input type="checkbox" name="toppings-availible" value="Bacon">Onion  ($0.50)<br>
+        <div class="col-sm-6">
+          <form id="all-pizzas">
+            <h2>Your Pizza:</h2>
+            <div class="new-pizza">
+              <label for="pizzaSize">Select the size of your pizza:</label>
+              <select class="form-control" id="pizzaSize">
+                <option value="8">Personal (8")</option>
+                <option value="10">Small (10")</option>
+                <option value="12">Medium (12")</option>
+                <option value="14">Large (14")</option>
+                <option value="16">XtraLarge (16")</option>
+                <option value="18">New York (18")</option>
+              </select>
+              <label for="pizzaBase">Select a base for your pizza:</label>
+              <select class="form-control" id="pizzaBase">
+                <option value="Tomato">Tomato</option>
+                <option value="Pesto">Pesto</option>
+              </select>
+              <div class="form-group">
+                <div class="row">
+                  <p><b>Please select which toppings you would like added to your pizza:</b></p>
+                  <div class="col-xs-5">
+                    <input type="checkbox" name="toppings-availible" value="Cheese">Cheesee ($0.50)<br>
+                    <input type="checkbox" name="toppings-availible" value="Double Cheese">Double Cheese  ($0.50)<br>
+                    <input type="checkbox" name="toppings-availible" value="Triple Cheese">Triple Cheese  ($0.50)<br>
+                    <input type="checkbox" name="toppings-availible" value="Pepperoni">Pepperoni  ($0.50)<br>
+                  </div>
+                  <div class="col-xs-5">
+                    <input type="checkbox" name="toppings-availible" value="Sausage">Sausage  ($0.50)<br>
+                    <input type="checkbox" name="toppings-availible" value="Bacon">Bacon  ($0.50)<br>
+                    <input type="checkbox" name="toppings-availible" value="Mushrooms">Mushroom ($0.50)<br>
+                    <input type="checkbox" name="toppings-availible" value="Bacon">Onion  ($0.50)<br>
+                  </div>
                 </div>
               </div>
+
+              <button type="submit" class="btn">Order Pizza</button>
+              <span class="btn btn-primary" id="add-pizzas">Add Another Pizza!</span>
+            </div><!-- This div ends the former form-->
+            <div id="addedPizzas">
             </div>
-
-            <button type="submit" class="btn">Order Pizza</button>
-            <span class="btn btn-primary" id="add-pizza">Add Another Pizza!</span>
           </form>
-
-
         </div> <!-- This div ends the column. -->
+
+
+
         <div class="col-sm-5">
           <h2>Delivery Address:</h2>
           <form id="new-customer">
@@ -81,11 +86,9 @@
         </div>  <!-- This div ends the column. -->
       </div>  <!-- This div ends the row. -->
       <div class="row">
-        <div class="col-sm-5">
-
-        </div>
-
       </div>  <!-- This div ends the row. -->
+
+
     </div>  <!-- This div ends the container. -->
   </body>
 </html>
