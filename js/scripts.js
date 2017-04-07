@@ -13,8 +13,11 @@ Pizza.prototype.addTopping = function(topping) {    //This function will add top
 }
 
 Pizza.prototype.cost = function() {                 //This function will calculate the cost of the pizza.
-  var cost = parseFloat(this.size) * 1.5;
+  var cost = parseFloat(this.size) * 1;
   cost += (this.toppings.length) * 0.5;
+  if (this.toppings.includes("Bacon")) {
+    cost += 0.5
+  }
   return cost;
 }
 
@@ -26,11 +29,15 @@ function Customer(fullName, street, city, state, zip) {
   this.zip = zip;
 }
 
+function totalCost(totalCost) {
+  this.totalCost = totalCost
+}
+
 // **********************************************************
 // User Interface Logic:
 // **********************************************************
 $(document).ready(function() {
-
+  var thisCost = new totalCost(0);
   $("form#all-pizzas").submit(function(event) {
     event.preventDefault();
     $(".new-pizza").each(function() {
@@ -47,6 +54,7 @@ $(document).ready(function() {
         $("#finalPizzaDisplay").append(topping + ", ");
       });
       $("#finalPizzaDisplay").append(
+        '$' + newPizza.cost() +
         '</li>');
     });
     $("#all-pizzas").toggleClass("hidden");
@@ -70,11 +78,11 @@ $(document).ready(function() {
   });
 
   $("#add-breadsticks").click(function() {
-    $("#finalPizzaDisplay").append("<li>One Order of Breadsticks,</li>");
+    $("#finalPizzaDisplay").append("<li>One Order of Breadsticks, $1.00</li>");
   });
 
   $("#add-soda").click(function() {
-    $("#finalPizzaDisplay").append("<li>One 750ml Soft Drink,</li>");
+    $("#finalPizzaDisplay").append("<li>One 750ml Soft Drink, $2.50</li>");
   });
 
   $("#add-pizzas").click(function() {
@@ -107,7 +115,7 @@ $(document).ready(function() {
             '</div>' +
             '<div class="col-xs-5">' +
               '<input type="checkbox" name="toppings-availible" value="Sausage">Sausage  ($0.50)<br>' +
-              '<input type="checkbox" name="toppings-availible" value="Bacon">Bacon  ($0.50)<br>' +
+              '<input type="checkbox" name="toppings-availible" value="Bacon">Bacon  ($1.00)<br>' +
               '<input type="checkbox" name="toppings-availible" value="Mushrooms">Mushroom ($0.50)<br>' +
               '<input type="checkbox" name="toppings-availible" value="Onion">Onion  ($0.50)<br>' +
             '</div>' +

@@ -19,9 +19,9 @@ html, body{
 }
 
 .verticalbar {
-  border:3px solid white;
+  border:3px solid #ff9933;
   border-radius: 25px;
-  color: white;
+  color: #ff9933;
   padding: 40px;
   margin: 20px;
   z-index: 1;
@@ -50,7 +50,14 @@ html, body{
   border-color: #ff8533;
   border-width: 0px 0px 10px 0px;
   position: absolute;
+  font-family: 'Lobster', cursive;
 }
+
+#topbar h1 {
+  font-size: 90px;
+  color: #ff3300;
+}
+
 
 #background {
   width: 100%;
@@ -65,4 +72,27 @@ html, body{
   background-color: black;
   display:inline-block;
   opacity:0.45;
+}
+
+.centered {
+  text-align: center;
+}
+
+.largetext {
+  font-family: 'Poiret One', cursive;
+  color: #ff9933;
+  font-size: 120px;
+}
+
+.smalltext {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 800;
+  color: white;
+  font-size: 25px;
+}
+
+.mediumtext {
+  font-family: 'Poiret One', cursive;
+  font-size: 45px;
+  color: white;
 }

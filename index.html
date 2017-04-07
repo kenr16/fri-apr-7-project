@@ -5,10 +5,17 @@
     <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
     <script type="text/javascript" src="js/jquery-3.2.0.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kanit|Lobster|Poiret+One" rel="stylesheet">
     <title>Pizza Site</title>
   </head>
   <body>
     <div id="topbar">
+      <div class="row">
+        <div class="col-xs-2">
+          <img src="img/pizzaicon.png"/>
+        </div>
+        <h1>Ken's Pizza Place</h1>
+      </div>
     </div>
     <div id="background" class="tint">
       <!-- <img src="img/background.jpg"/> -->
@@ -47,21 +54,22 @@
                   <div class="col-xs-5">
                     <input type="checkbox" name="toppings-availible" value="Sausage">Sausage  ($0.50)<br>
                     <input type="checkbox" name="toppings-availible" value="Bacon">Bacon  ($0.50)<br>
-                    <input type="checkbox" name="toppings-availible" value="Mushrooms">Mushroom ($0.50)<br>
-                    <input type="checkbox" name="toppings-availible" value="Onion">Onion  ($0.50)<br>
+                    <input type="checkbox" name="toppings-availible" value="Artichoke">Artichoke ($0.50)<br>
+                    <input type="checkbox" name="toppings-availible" value="Anchovy">Anchovy  ($0.50)<br>
                   </div>
                 </div>
               </div>
             </div><!-- This div ends the former form-->
             <div id="addedPizzas">
             </div>
-            <button type="submit" class="btn">Order Pizza</button>
+            <button type="submit" class="btn btn-success">Order Pizza</button>
             <span class="btn btn-primary" id="add-pizzas">Add Another Pizza!</span>
           </form>
           <div id="finalPizzaDiv">
             <h2>Your Order Made To Go:</h2>
             <ul id="finalPizzaDisplay">
             </ul>
+            <p class="finalcost">Final Cost Here</p>
             <span class="btn btn-primary" id="add-breadsticks">Add Breadsticks!</span>
             <span class="btn btn-primary" id="add-soda">Add Soda!</span>
           </div>
@@ -104,9 +112,12 @@
 
         </div>  <!-- This div ends the column. -->
       </div>  <!-- This div ends the row. -->
-      <div class="row">
+      <div class="row centered">
+        <p><span class="largetext">-{ </span><span class="smalltext">APRIL</span><span class="largetext"> HAPPY HOUR </span><span class="smalltext">2017</span><span class="largetext"> }-</span></p>
       </div>  <!-- This div ends the row. -->
-
+      <div class="row centered">
+        <p class="mediumtext">4:00PM - 6:00PM EVERYDAY</p>
+      </div>
 
     </div>  <!-- This div ends the container. -->
   </body>
